@@ -1,6 +1,26 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" some backspace magic
+set backspace=indent,eol,start
+
+" This will allow Vim to use your custom .vimrc in the current working directory.
+set exrc
+set secure
+
+" Pathogen
+execute pathogen#infect()
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" CtrlP for file searching
+" https://kien.github.io/ctrlp.vim/
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = 'c'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -11,6 +31,9 @@ call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
 
   Plugin 'Valloric/YouCompleteMe'
+
+  " vimtags for CTags and code navigation
+  Plugin 'szw/vim-tags'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -26,6 +49,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" CTags
+let g:vim_tags_auto_generate = 1
 
 set tabstop=2
 set softtabstop=2
